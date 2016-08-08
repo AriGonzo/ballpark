@@ -50,12 +50,11 @@
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(35);
 
+	// Include the Main Component
+	var Main = __webpack_require__(175);
+
 	// This code here allows us to render our main component
-	ReactDOM.render(React.createElement(
-		'h1',
-		null,
-		'Test'
-	), document.getElementById('app'));
+	ReactDOM.render(React.createElement(Main, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21434,6 +21433,65 @@
 	var ReactMount = __webpack_require__(167);
 
 	module.exports = ReactMount.renderSubtreeIntoContainer;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	// Include React 
+	var React = __webpack_require__(1);
+
+	// Components
+	var Sidebar = __webpack_require__(177);
+
+	// Helper Function
+	var helpers = __webpack_require__(176);
+
+	var Main = React.createClass({
+		displayName: 'Main',
+
+		render: function render() {
+			return React.createElement(
+				'div',
+				{ className: 'row' },
+				React.createElement(
+					'div',
+					{ className: 'col-md-3' },
+					React.createElement(Sidebar, null)
+				),
+				React.createElement('div', { className: 'col-md-9' })
+			);
+		}
+	});
+
+	module.exports = Main;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	// Include React 
+	var React = __webpack_require__(1);
+
+	var Sidebar = React.createClass({
+		displayName: "Sidebar",
+
+		render: function render() {
+			return React.createElement("div", { className: "sidebarContainer" });
+		}
+	});
+
+	module.exports = Sidebar;
 
 /***/ }
 /******/ ]);
