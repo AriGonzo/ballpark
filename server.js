@@ -4,8 +4,6 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-//Requre Schemas
-
 // Create Instance of Express
 var app = express();
 var PORT = process.env.PORT || 4000; // Sets an initial port. We'll use this later in our listener
@@ -23,6 +21,7 @@ app.use(express.static('./public'));
 
 // MongoDB Configuration configuration (Change this URL to your own DB)
 mongoose.connect('mongodb://localhost:27017/ballpark');
+mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 
 db.on('error', function (err) {
