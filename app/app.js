@@ -3,7 +3,10 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 // Include the Main Component
-var Main = require('./Components/Main')
+var Main = require('./Components/Main');
+
+// Stylesheets
+require('./styles/app.scss');
 
 // This code here allows us to render our main component
 ReactDOM.render(

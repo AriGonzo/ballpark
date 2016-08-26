@@ -7,6 +7,11 @@ var ExpenseSchema = new Schema({
 		type: Schema.Types.ObjectId, 
 		ref: 'User'
 	},
+	type: {
+		type: String,
+		enum: ['Expense', 'Asset'], 
+		default: 'Expense'
+	},
 	amount: Number,
 	active: Boolean,
 	dueDate: Date,

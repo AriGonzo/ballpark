@@ -4,13 +4,11 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
 	username: String,
 	password: String,
-	funds: {
-		amount: Number,
-		income: [{
-			amount: Number,
-			frequency: String
-		}]
-	}
+	fundsAmount: Number,
+	transactions: [{
+		type: Schema.Types.ObjectId, 
+		ref: 'Transaction'
+	}]
 });
 
 module.exports = mongoose.model('User', UserSchema);

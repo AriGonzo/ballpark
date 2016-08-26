@@ -2,7 +2,8 @@
 var React = require('react');
 
 // Components
-var Sidebar = require('./Layout/Sidebar')
+var BallparkControls = require('./Children/BallparkControls');
+var Graph = require('./Children/Graph');
 
 // Helper Function
 var helpers = require('./utils/helpers.js');
@@ -10,14 +11,22 @@ var helpers = require('./utils/helpers.js');
 var Main = React.createClass({
 	render: function(){
 		return (
-			<div className="row">
-				<div className="col-md-3">
-					<Sidebar />
+			<div className="container">
+				<div className="row">
+					<div className="col-md-6">
+						<BallparkControls />
+					</div>
+					<div className="col-md-6">
+						<Graph />
+					</div>
 				</div>
-				<div className="col-md-9">
+				<div className="row">
+					<div className="col-md-12">
+						
+					</div>
 				</div>
 			</div>
-			)
+			);
 	}
 });
 
