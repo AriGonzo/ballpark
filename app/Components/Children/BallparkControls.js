@@ -19,6 +19,10 @@ var BallparkControls = React.createClass({
 		this.setState({ showModal: true });
 	},
 
+	save: function(){
+		this.close();
+	},
+
 	close: function() {
 		this.setState({ showModal: false });
 	},
@@ -34,7 +38,7 @@ var BallparkControls = React.createClass({
 						<a href="javascript:void(0)"><h4><i className="fa fa-question"></i> Can I Buy?</h4></a>
 						<a href="javascript:void(0)"><h4><i className="fa fa-clock-o"></i> Time Travel</h4></a>
 					</div>
-					<AddExpenseModal close={this.close} showModal={this.state.showModal} />
+					<AddExpenseModal close={this.close} save={this.save} showModal={this.state.showModal} />
 				</div>
 			);
 	}

@@ -21514,6 +21514,10 @@
 			this.setState({ showModal: true });
 		},
 
+		save: function save() {
+			this.close();
+		},
+
 		close: function close() {
 			this.setState({ showModal: false });
 		},
@@ -21571,7 +21575,7 @@
 						)
 					)
 				),
-				React.createElement(AddExpenseModal, { close: this.close, showModal: this.state.showModal })
+				React.createElement(AddExpenseModal, { close: this.close, save: this.save, showModal: this.state.showModal })
 			);
 		}
 	});
@@ -21643,7 +21647,7 @@
 
 
 	// module
-	exports.push([module.id, ".testClass {\n  color: red; }\n", ""]);
+	exports.push([module.id, "a:focus {\n  outline: 0; }\n", ""]);
 
 	// exports
 
@@ -27047,7 +27051,101 @@
 							'Add Expense/Asset'
 						)
 					),
-					React.createElement(_lib.Modal.Body, null),
+					React.createElement(
+						_lib.Modal.Body,
+						null,
+						React.createElement(
+							'div',
+							{ className: 'row' },
+							React.createElement(
+								'div',
+								{ className: 'col-md-6' },
+								React.createElement(
+									'label',
+									{ 'for': 'title' },
+									'Title'
+								),
+								React.createElement('input', { className: 'form-control', id: 'title' }),
+								React.createElement(
+									'label',
+									{ 'for': 'amount' },
+									'Amount'
+								),
+								React.createElement('input', { className: 'form-control', id: 'amount' }),
+								React.createElement(
+									'label',
+									{ 'for': 'start' },
+									'Start Date'
+								),
+								React.createElement('input', { className: 'form-control', id: 'start' })
+							),
+							React.createElement(
+								'div',
+								{ className: 'col-md-6' },
+								React.createElement(
+									'label',
+									null,
+									'Type '
+								),
+								React.createElement(
+									'div',
+									{ className: 'expenseType' },
+									React.createElement(
+										'form',
+										null,
+										React.createElement(
+											'label',
+											{ className: 'radio-inline' },
+											React.createElement('input', { type: 'radio', name: 'expenseType' }),
+											'Expense'
+										),
+										React.createElement(
+											'label',
+											{ className: 'radio-inline' },
+											React.createElement('input', { type: 'radio', name: 'expenseType' }),
+											'Asset'
+										)
+									)
+								),
+								React.createElement('br', null),
+								React.createElement(
+									'label',
+									{ 'for': 'term' },
+									'Expense Term'
+								),
+								React.createElement(
+									'select',
+									{ className: 'form-control', id: 'term' },
+									React.createElement(
+										'option',
+										{ value: 'once' },
+										'One Time'
+									),
+									React.createElement(
+										'option',
+										{ value: 'biWeekly' },
+										'Bi-Weekly'
+									),
+									React.createElement(
+										'option',
+										{ value: 'short-term' },
+										'Short-Term'
+									),
+									React.createElement(
+										'option',
+										{ value: 'monthly' },
+										'Monthly'
+									)
+								),
+								React.createElement(
+									'label',
+									{ 'for': 'end' },
+									'End Date'
+								),
+								React.createElement('input', { className: 'form-control', id: 'end' })
+							)
+						)
+					),
 					React.createElement(
 						_lib.Modal.Footer,
 						null,
@@ -27055,6 +27153,11 @@
 							_lib.Button,
 							{ onClick: this.props.close },
 							'Close'
+						),
+						React.createElement(
+							_lib.Button,
+							{ onClick: this.props.save },
+							'Save'
 						)
 					)
 				)
