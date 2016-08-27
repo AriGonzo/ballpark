@@ -11,20 +11,16 @@ var AddExpenseModal = React.createClass({
 				<div>
 					<Modal show={this.props.showModal} onHide={this.props.close}>
 			          <Modal.Header closeButton>
-			            <Modal.Title>Add Expense/Asset</Modal.Title>
+			            <Modal.Title>New Expense/Asset</Modal.Title>
 			          </Modal.Header>
 			          <Modal.Body>
 			          	<div className="row">
 				          	<div className="col-md-6">
 				          		<label for="title">Title</label>
 				          		<input className="form-control" id="title" />
-				          		<label for="amount">Amount</label>
-				          		<input className="form-control" id="amount" />
-				          		<label for="start">Start Date</label>
-				          		<input className="form-control" id="start" />
-				          	</div>
-				          	<div className="col-md-6">
-				          		<label>Type </label>
+			          		</div>
+			          		<div className="col-md-6">
+			          			<label>Type </label>
 				          		<div className="expenseType">
 				          			<form>
 									    <label className="radio-inline">
@@ -35,16 +31,32 @@ var AddExpenseModal = React.createClass({
 									    </label>
 								    </form>
 				          		</div>
-				          		<br />
+			          		</div>
+		          		</div>
+		          		<div className="row">
+		          			<div className="col-md-6">
+				          		<label for="amount">Amount</label>
+				          		<input className="form-control" id="amount" />
+			          		</div>
+			          		<div className="col-md-6">
 								<label for="term">Expense Term</label>
 				          		<select className="form-control" id="term">
+				          			<option>Choose One</option>
 				          			<option value="once">One Time</option>
 				          			<option value="biWeekly">Bi-Weekly</option>
 				          			<option value="short-term">Short-Term</option>
 				          			<option value="monthly">Monthly</option>
 			          			</select>
+			          		</div>
+		          		</div>
+		          		<div className="row">
+		          			<div className="col-md-6">
+				          		<label for="start">Start Date</label>
+				          		<input className="form-control" id="start" />
+				          	</div>
+				          	<div className="col-md-6">
 				          		<label for="end">End Date</label>
-				          		<input className="form-control" id="end" />
+				          		<input placeholder="Leave blank if continuous" className="form-control" id="end" />
 				          	</div>
 			          	</div>
 			          </Modal.Body>
