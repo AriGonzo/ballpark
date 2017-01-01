@@ -1,0 +1,1 @@
+var appRouter = angular.module('ballpark', ['ui.router']);
