@@ -3,16 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Ballpark</title>
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="angular-material/angular-material.css">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body ng-app="ballpark">
+	<navbar></navbar>
 	<div ui-view></div>
 	<!-- Angular Library -->
 	<script type="text/javascript" src="angular/angular.js"></script>
 	<script type="text/javascript" src="angular-ui-router/release/angular-ui-router.js"></script>
-	<!-- My Files -->
+	<script type="text/javascript" src="angular-animate/angular-animate.js"></script>
+	<script type="text/javascript" src="angular-aria/angular-aria.js"></script>
+	<script type="text/javascript" src="angular-material/angular-material.js"></script>
+	<!-- Routing -->
 	<script type="text/javascript" src="app/app.js"></script>
+	<!-- Controllers -->
+	<script type="text/javascript" src="app/controllers/HomeCtrl.js"></script>
+	<!-- Services -->
+	<script type="text/javascript" src="app/services/APIService.js"></script>
+	<!-- Components -->
+	<script type="text/javascript" src="app/components/ExpenseComponent.js"></script>
+	<script type="text/javascript" src="app/components/NewExpenseComponent.js"></script>
+	<script type="text/javascript" src="app/components/NavComponent.js"></script>
+	<!-- Directives -->
+	<script type="text/javascript" src="app/directives/directives.js"></script>
 </body>
 </html>
