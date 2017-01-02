@@ -1,0 +1,98 @@
+md-card {
+	position: relative;
+}
+
+md-backdrop {
+	position: fixed;
+}
+
+.slideOutNav {
+	position: fixed;
+}
+
+.fixedButton {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 3;
+}
+
+.leftBar {
+	height: auto;
+	background: rgb(63,81,181);
+}
+
+.calculationsContainer {
+	width: 25%;
+    margin: auto;
+    top: 20%;
+    left: 2.5%;
+    position: fixed;
+}
+
+.calculationsContainer .inputContainer {
+	padding-top: 20px;
+}
+
+.calculationsContainer md-input-container {
+    font-size: 25pt;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.calculationTable {
+	width: 100%;
+	padding-bottom: 30px;
+	padding-left: 10px;
+}
+
+.calculationTable td {
+	width: 33%;
+	text-align: center;
+}
+
+.calculationTable .leftJustify {
+	text-align: left;
+}
+
+.calcStyle {
+	background: rgb(63,81,181);
+}
+
+.cardTitle {
+	padding: 20px 0 16px 10px;
+}
+
+.cardHeader {
+	font-size: 22px;
+}
+
+.cardLabel {
+	position: absolute;
+    width: 100%;
+    height: 10px;
+}
+
+.Expense {
+	background: #D50102;
+}
+
+.Income {
+	background: #01AA01;
+}
+
+.cardDate {
+    position: absolute;
+    right: 10px;
+    top: 37%;
+    font-size: 25pt;
+    font-weight: 100;
+}
+
+.expenseDisplayCard.ng-move,
+.expenseDisplayCard.ng-enter,
+.expenseDisplayCard.ng-leave {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+

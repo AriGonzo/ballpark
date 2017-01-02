@@ -1,12 +1,18 @@
-<md-card md-theme="'dark-blue'" md-theme-watch>
-	<md-card-title>
+<md-card md-theme-watch>
+	<div class="cardLabel {{$ctrl.expense.type}}"></div>
+	<div class="cardDate">{{$ctrl.expense.date}}</div>
+	<md-card-title class="cardTitle">
 	  <md-card-title-text>
-	    <span class="md-headline">{{$ctrl.expense.title}}</span>
-	    <span class="md-subhead">Due on the {{$ctrl.expense.date|dateSuffix}}</span>
+	    <span class="md-headline cardHeader">{{$ctrl.expense.title}}</span>
 	  </md-card-title-text>
 	</md-card-title>
+	<md-card-content>
+		<h2>{{$ctrl.expense.amount | currency}}</h2>
+	</md-card-content>
 	<md-card-actions layout="row" layout-align="end center">
-	  <md-button>Action 1</md-button>
-	  <md-button>Action 2</md-button>
+	  <md-button>Paid</md-button>
+	  <md-button>Remove</md-button>
 	</md-card-actions>
 </md-card>
+
+

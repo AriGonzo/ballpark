@@ -1,7 +1,8 @@
 let appRouter = angular.module('ballpark', [
 	'ui.router',
 	'HomeApp',
-	'NavModule'
+	'NavModule',
+    'ngAnimate'
 	]);
 
 appRouter.config(function($stateProvider, $urlRouterProvider, $locationProvider) {

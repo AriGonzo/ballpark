@@ -1,0 +1,21 @@
+<div class="calculationsContainer">
+	<md-content layout-gt-sm="row" layout-padding class="inputContainer">
+		<md-input-container flex>
+			<label for="amount">Amount in Account</label>
+			<input ng-model="$ctrl.amount" format="currency" id="amount">
+		</md-input-container>
+	</md-content>
+
+	<md-content>
+		<table class="calculationTable">
+			<tbody>
+				<tr ng-repeat="item in $ctrl.collectionArray">
+					<td class="leftJustify">{{item.month}} {{item.date | dateSuffix}}</td>
+					<td>-</td>
+					<td>$9000</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-content>
+
+</div>
