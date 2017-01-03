@@ -1,2 +1,2 @@
 # ballpark
-Learning React project - Ballpark: The More or Less Expense Tracker
+Brushing up on my Angular - Ballpark: The More or Less Expense Tracker
