@@ -9,7 +9,11 @@
 	          <strong>First Half of the Month</strong>
 	        </h2>
 	        <span flex></span>
-	        <h2>$2,310</h2>
+	        <h2>
+	        	<span ng-show="home.api.firstHalfPL > 0">+</span>
+	        	<span ng-show="home.api.firstHalfPL < 0"></span>
+	        	{{home.firstHalfPL() | currency}}
+        	</h2>
 	      </div>
 	    </md-toolbar>
 		<md-grid-list
@@ -26,7 +30,11 @@
 	          <strong>Second Half of the Month</strong>
 	        </h2>
 	        <span flex></span>
-	        <h2>$2,310</h2>
+	        <h2>
+	        	<span ng-show="home.api.secondHalfPL > 0">+</span>
+	        	<span ng-show="home.api.secondHalfPL < 0"></span>
+	        	{{home.secondHalfPL() | currency}}
+	        </h2>
 	      </div>
 	    </md-toolbar>
 		<md-grid-list

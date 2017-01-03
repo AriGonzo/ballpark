@@ -2,7 +2,12 @@ let app = angular.module('HomeApp', ['APIService', 'ExpenseModule', 'Calculation
 
 app.controller('HomeCtrl', function(api){
 	this.collection = api.expenseCollection;
+	this.firstHalfPL = api.getFirstHalfPL;
+	this.secondHalfPL = api.getSecondHalfPL;
+	this.api = api;
 	api.getExpenses();
+
+	let that = this;
 
 	this.greaterThan = function(prop, val){
 	    return function(item){
