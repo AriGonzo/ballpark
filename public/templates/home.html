@@ -1,0 +1,49 @@
+<div layout="row">
+	<div flex="30" class="leftBar">
+		<calculations-display></calculations-display>
+	</div>
+	<div flex="70"  class="cardContainer">
+		<md-toolbar>
+	      <div class="md-toolbar-tools">
+	        <h2>
+	          <strong>First Half of the Month</strong>
+	        </h2>
+	        <span flex></span>
+	        <h2>
+	        	<span ng-show="home.api.getFirstHalfPL() > 0">+</span>
+	        	<span ng-show="home.api.getFirstHalfPL() < 0">-</span>
+	        	{{home.firstHalfPL() | currency}}
+        	</h2>
+	      </div>
+	    </md-toolbar>
+		<md-grid-list
+		        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+		        md-row-height-gt-md="1:1" md-row-height="4:3"
+		        md-gutter="8px" md-gutter-gt-sm="4px" >
+		        <md-grid-tile ng-repeat="expense in home.collection | orderBy: 'date' | filter: home.lessThan('date', 16)" " md-rowspan="{{expense.span.row}}" md-colspan="{{expense.span.col}}" md-colspan-sm="1" md-colspan-xs="1" class="expenseDisplayCard" >
+		        	<expense-display expense="expense"></expense-display>
+		        </md-grid-tile>
+		</md-grid-list>
+		<md-toolbar>
+	      <div class="md-toolbar-tools">
+	        <h2>
+	          <strong>Second Half of the Month</strong>
+	        </h2>
+	        <span flex></span>
+	        <h2>
+	        	<span ng-show="home.api.getSecondHalfPL() > 0">+</span>
+	        	<span ng-show="home.api.getSecondHalfPL() < 0"></span>
+	        	{{home.secondHalfPL() | currency}}
+	        </h2>
+	      </div>
+	    </md-toolbar>
+		<md-grid-list
+		        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="4"
+		        md-row-height-gt-md="1:1" md-row-height="4:3"
+		        md-gutter="8px" md-gutter-gt-sm="4px" >
+		        <md-grid-tile ng-repeat="expense in home.collection | orderBy: 'date' | filter: home.greaterThan('date', 15)" " md-rowspan="{{expense.span.row}}" md-colspan="{{expense.span.col}}" md-colspan-sm="1" md-colspan-xs="1">
+		        	<expense-display expense="expense"></expense-display>
+		        </md-grid-tile>
+		</md-grid-list>
+	</div>
+</div>
