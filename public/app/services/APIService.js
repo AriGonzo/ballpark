@@ -116,9 +116,9 @@ APIService.factory('calculations', ['$http', function($http){
 		        	}
 		        } else if (i == 1) {
 		        	if (dateNumber == 1) {
-		        		projectionAmount = this.amount + this.secondHalfPLPaid + this.calculatedArray[i-1].amount
+		        		projectionAmount = this.secondHalfPLPaid + this.calculatedArray[i-1].amount
 		        	} else {
-		        		projectionAmount = this.amount + this.firstHalfPLPaid + this.calculatedArray[i-1].amount
+		        		projectionAmount = this.firstHalfPLPaid + this.calculatedArray[i-1].amount
 		        	}
 		        } else if (dateNumber == 1) {
 		            projectionAmount = this.calculatedArray[i-1].amount + this.secondHalfPL

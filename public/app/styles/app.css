@@ -35,6 +35,11 @@ md-backdrop {
 
 .calculationsContainer .inputContainer {
 	padding-top: 20px;
+	text-align: center;
+}
+
+.amountInput {
+	text-align: center;
 }
 
 .calculationsContainer md-input-container {
@@ -67,7 +72,7 @@ md-backdrop {
 }
 
 md-grid-list {
-    height: 100vh;
+    height: 50vh;
 }
 
 .cardTitle {
