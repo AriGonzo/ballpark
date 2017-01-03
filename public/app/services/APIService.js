@@ -3,6 +3,8 @@ let APIService = angular.module('APIService', []);
 APIService.factory('api', ['$http', 'calculations', function($http, calculations){
 	let firstHalfPL = 0;
 	let secondHalfPL = 0;
+	let firstHalfPLPaid = 0;
+	let secondHalfPLPaid = 0;
 	return {
 		expenseCollection: [],
 		getExpenses: function(){
@@ -17,14 +19,29 @@ APIService.factory('api', ['$http', 'calculations', function($http, calculations
 			}.bind(this));
 		},
 		setPL: function(){
+			firstHalfPL = 0;
+			firstHalfPLPaid = 0;
+			secondHalfPL = 0;
+			secondHalfPLPaid = 0;
 			this.expenseCollection.forEach(function(expense){
 				if (expense.date <= 15) {
 					expense.type == "Expense" ? firstHalfPL -= expense.amount : firstHalfPL += expense.amount
+					if (!expense.paid && expense.type == "Expense") {
+						firstHalfPLPaid -= expense.amount;
+					} else if (expense.type == "Income") {
+						firstHalfPLPaid += expense.amount;
+					}
 				} else {
 					expense.type == "Expense" ? secondHalfPL -= expense.amount : secondHalfPL += expense.amount
+					if (!expense.paid && expense.type == "Expense") {
+						secondHalfPLPaid -= expense.amount;
+					} else if (expense.type == "Income") {
+						secondHalfPLPaid += expense.amount;
+					}
 				}
 			}.bind(this));
-			calculations.calculateValues(firstHalfPL, secondHalfPL)
+			console.log(secondHalfPLPaid)
+			calculations.calculateValues(firstHalfPL, secondHalfPL, firstHalfPLPaid, secondHalfPLPaid)
 		},
 		getCollection: function(){
 			return this.expenseCollection
@@ -34,6 +51,16 @@ APIService.factory('api', ['$http', 'calculations', function($http, calculations
 		},
 		getSecondHalfPL: function(){
 			return secondHalfPL
+		},
+		togglePaid: function(model){
+			let idx = this.expenseCollection.indexOf(model);
+			this.expenseCollection[idx].paid = !this.expenseCollection[idx].paid;
+			this.setPL();
+		},
+		removeExpense: function(model){
+			let idx = this.expenseCollection.indexOf(model);
+			this.expenseCollection.splice(idx, 1);
+			this.setPL();
 		}
 	}
 }]);
@@ -49,12 +76,14 @@ APIService.factory('calculations', ['$http', function($http){
 		amount: 0,
 		getAccountBalance: function(){
 		},
-		calculateValues: function(firstHalfPL, secondHalfPL){
+		calculateValues: function(firstHalfPL, secondHalfPL, firstHalfPLPaid, secondHalfPLPaid){
 			this.calculatedArray.length = 0;
 			//building out the collection for the projections - 10 projections built
-			if (firstHalfPL && secondHalfPL){
+			if (firstHalfPL && secondHalfPL && firstHalfPLPaid && secondHalfPLPaid){
 				this.firstHalfPL = firstHalfPL;
 				this.secondHalfPL = secondHalfPL;
+				this.firstHalfPLPaid = firstHalfPLPaid;
+				this.secondHalfPLPaid = secondHalfPLPaid;
 			}
 		    for (let i = 0; i < 10; i++) {
 		    	let dateNumber, iteratorMonth, monthIndex, projectionAmount;
@@ -79,14 +108,22 @@ APIService.factory('calculations', ['$http', function($http){
 		    	}
 
 		        //Logic to factor projection amount
-		        if (i == 0 && dateNumber == 1) {
-		            projectionAmount = this.amount + this.firstHalfPL
-		        } else if (i == 0 && dateNumber == 15) {
-		            projectionAmount = this.amount + this.secondHalfPL
+		        if (i == 0) {
+		        	if (dateNumber == 1) {
+		        		projectionAmount = this.amount + this.secondHalfPLPaid
+		        	} else {
+		        		projectionAmount = this.amount + this.firstHalfPLPaid
+		        	}
+		        } else if (i == 1) {
+		        	if (dateNumber == 1) {
+		        		projectionAmount = this.amount + this.secondHalfPLPaid + this.calculatedArray[i-1].amount
+		        	} else {
+		        		projectionAmount = this.amount + this.firstHalfPLPaid + this.calculatedArray[i-1].amount
+		        	}
 		        } else if (dateNumber == 1) {
-		            projectionAmount = this.calculatedArray[i-1].amount + this.firstHalfPL
-		        } else {
 		            projectionAmount = this.calculatedArray[i-1].amount + this.secondHalfPL
+		        } else {
+		        	projectionAmount = this.calculatedArray[i-1].amount + this.firstHalfPL
 		        }
 
 		    	let collectionObj = {

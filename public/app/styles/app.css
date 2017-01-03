@@ -1,3 +1,6 @@
+body {
+	background: #3F51B5;
+}
 md-card {
 	position: relative;
 }
@@ -59,6 +62,14 @@ md-backdrop {
 	background: rgb(63,81,181);
 }
 
+.cardContainer {
+	background: #FAFAFA;
+}
+
+md-grid-list {
+    height: 100vh;
+}
+
 .cardTitle {
 	padding: 20px 0 16px 10px;
 }
@@ -81,12 +92,20 @@ md-backdrop {
 	background: #01AA01;
 }
 
+.paidBtn.Income {
+	display: none;
+}
+
 .cardDate {
     position: absolute;
     right: 10px;
     top: 37%;
     font-size: 25pt;
     font-weight: 100;
+}
+
+.expenseCardButtons {
+	width: 184px;
 }
 
 .expenseDisplayCard.ng-move,

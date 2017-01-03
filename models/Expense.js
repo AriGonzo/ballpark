@@ -8,7 +8,8 @@ var ExpenseSchema = new Schema({
 		enum: ['Expense', 'Income']
 	},
 	amount: Number,
-	date: Number
+	date: Number,
+	paid: Boolean
 });
 
 module.exports = mongoose.model('Expense', ExpenseSchema);

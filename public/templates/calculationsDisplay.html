@@ -9,7 +9,7 @@
 	<md-content>
 		<table class="calculationTable">
 			<tbody>
-				<tr ng-repeat="item in $ctrl.calculations.getCalculatedArray()">
+				<tr ng-repeat="item in $ctrl.calculations.calculatedArray">
 					<td class="leftJustify">{{item.month}} {{item.date | dateSuffix}}</td>
 					<td>-</td>
 					<td>{{item.amount | currency}}</td>

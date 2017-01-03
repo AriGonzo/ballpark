@@ -9,9 +9,10 @@
 	<md-card-content>
 		<h2>{{$ctrl.expense.amount | currency}}</h2>
 	</md-card-content>
-	<md-card-actions layout="row" layout-align="end center">
-	  <md-button>Paid</md-button>
-	  <md-button>Remove</md-button>
+	<md-card-actions class="expenseCardButtons" layout="row" layout-align="end center">
+		<md-button class="md-raised paidBtn {{$ctrl.expense.type}}" ng-hide="$ctrl.expense.paid" ng-click="$ctrl.api.togglePaid($ctrl.expense)">Paid</md-button>
+	  	<md-button  class="md-raised md-primary" ng-show="$ctrl.expense.paid" ng-click="$ctrl.api.togglePaid($ctrl.expense)">Paid</md-button>
+	  	<md-button ng-click="$ctrl.api.removeExpense($ctrl.expense)">Remove</md-button>
 	</md-card-actions>
 </md-card>
 
